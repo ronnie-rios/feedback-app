@@ -11,7 +11,7 @@ function App() {
     const [feedback, setFeedback] = useState(FeedbackData)
     //filter by id and remove from arr using filter
     const deleteFeedback = (id) => {
-        if (window.confirm('are you sure you rant to delete')) {
+        if (window.confirm('are you sure you want to delete')) {
             setFeedback(feedback.filter((item) => item.id !== id))
         }
 
