@@ -1,5 +1,6 @@
 import React from 'react';
 import FeedBackitem from './FeedbackItem';
+import PropTypes from 'prop-types';
 
 function FeedbackList({ feedback }) {
     //if no feedback display this p tag
@@ -18,4 +19,13 @@ function FeedbackList({ feedback }) {
   )
 }
 
+FeedbackList.propTypes = {
+    feedback: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            text: PropTypes.string.isRequired,
+            rating: PropTypes.number.isRequired,
+        })
+    )
+}
 export default FeedbackList
