@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FeedbackData from './data/FeedbackData';
 import FeedbackList from './components/FeedbackList';
 import Header from './components/Header';
+import FeedbackStats from './components/FeedbackStats';
 
 function App() {
     //setting the global app state with the data arr from feedbackdata
@@ -18,6 +19,7 @@ function App() {
        <>
        <Header />
         <div className='container'>
+            <FeedbackStats feedback={feedback} />
             {/* passing the data as feedback to the list */}
             <FeedbackList 
                 feedback={feedback}
