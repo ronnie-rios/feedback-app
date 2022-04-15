@@ -1,4 +1,5 @@
 import React from 'react';
+import Feedback from './components/Feedback';
 import Header from './components/Header';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
        <>
        <Header />
         <div className='container'>
-            <h2>The FeedBack App</h2>
+            <Feedback />
         </div>
         </> 
     )
