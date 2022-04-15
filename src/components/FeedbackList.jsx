@@ -2,7 +2,7 @@ import React from 'react';
 import FeedBackitem from './FeedbackItem';
 import PropTypes from 'prop-types';
 
-function FeedbackList({ feedback }) {
+function FeedbackList({ feedback, handleDelete }) {
     //if no feedback display this p tag
     if (!feedback || feedback.length === 0) {
         return <p>no feedback yet</p>
@@ -13,7 +13,11 @@ function FeedbackList({ feedback }) {
         {/*mapping through feedback destructured property, set item as own component
         and setting the key to the feedback.item.id and item to feedback.item*/}
         {feedback.map((item)=> (
-            <FeedBackitem key={item.id} item={item}/>
+            <FeedBackitem 
+                key={item.id}
+                item={item}
+                handleDelete={handleDelete}
+            />
         ))}
     </div>
   )
