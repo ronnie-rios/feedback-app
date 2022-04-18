@@ -21,7 +21,7 @@ function App() {
 
     const addfeedback = (newFeedback) => {
         newFeedback.id = uuidv4()
-        //adding to our state of objects
+        //adding to our state of objects; should be added to our ui
         setFeedback([newFeedback, ...feedback])
     }
 
