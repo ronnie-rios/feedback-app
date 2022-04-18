@@ -9,7 +9,7 @@ import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
 import AboutLink from './components/AboutLink';
-
+import { FeedbackProvider } from './context/FeedBackContext';
 
 function App() {
     //setting the global app state with the data arr from feedbackdata
@@ -29,6 +29,7 @@ function App() {
     }
 
     return (
+       <FeedbackProvider>
        <Router>
             <Header />
             <div className='container'>
@@ -49,6 +50,7 @@ function App() {
                 <AboutLink />
             </div>
         </Router>
+        </FeedbackProvider>
     )
 }
 
