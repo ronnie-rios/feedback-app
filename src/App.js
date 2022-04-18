@@ -8,6 +8,8 @@ import Header from './components/Header';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
 import AboutPage from './pages/AboutPage';
+import AboutLink from './components/AboutLink';
+
 
 function App() {
     //setting the global app state with the data arr from feedbackdata
@@ -44,6 +46,7 @@ function App() {
                     ></Route>
                 <Route path='/about' element={<AboutPage />} />
                 </Routes>
+                <AboutLink />
             </div>
         </Router>
     )
