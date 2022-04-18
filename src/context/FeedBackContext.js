@@ -41,7 +41,14 @@ export const FeedbackProvider = ({ children }) => {
         setFeedback([newFeedback, ...feedback])
     }
 
-    //update feedback
+    //updates the item and spreads it on the arr of feedback
+    const updateFeedback = (id, updItem) => {
+        setFeedback(feedback.map((item) => item.id === id ? 
+        {...item, ...updItem} : item
+        ))
+    }
+
+    //set item to be updated 
     const editFeedback = (item) => {
         setFeedbackEdit({
             item,
@@ -55,6 +62,7 @@ export const FeedbackProvider = ({ children }) => {
           deleteFeedback,
           addFeedback,
           editFeedback,
+          updateFeedback,
           //feedbackedit is state line above is the func
           feedbackEdit
         }}>
