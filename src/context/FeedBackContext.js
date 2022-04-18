@@ -45,7 +45,7 @@ export const FeedbackProvider = ({ children }) => {
     const editFeedback = (item) => {
         setFeedbackEdit({
             item,
-            edt: true
+            edit: true
         })
     }
 
@@ -54,7 +54,9 @@ export const FeedbackProvider = ({ children }) => {
           feedback,
           deleteFeedback,
           addFeedback,
-          editFeedback
+          editFeedback,
+          //feedbackedit is state line above is the func
+          feedbackEdit
         }}>
         { children }
         </FeedbackContext.Provider>
