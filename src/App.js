@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import FeedbackData from './data/FeedbackData';
 import FeedbackList from './components/FeedbackList';
 import Header from './components/Header';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
+
 
 function App() {
     //setting the global app state with the data arr from feedbackdata
@@ -16,11 +18,18 @@ function App() {
         }
 
     }
+
+    const addfeedback = (newFeedback) => {
+        newFeedback.id = uuidv4()
+        //adding to our state of objects
+        setFeedback([newFeedback, ...feedback])
+    }
+
     return (
        <>
        <Header />
         <div className='container'>
-            <FeedbackForm />
+            <FeedbackForm handleAdd={addfeedback}/>
             <FeedbackStats feedback={feedback} />
             {/* passing the data as feedback to the list */}
             <FeedbackList 
