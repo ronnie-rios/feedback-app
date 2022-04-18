@@ -21,24 +21,40 @@ export const FeedbackProvider = ({ children }) => {
             rating: 7,
         },
     ])
+    //edit state
+    const [feedbackEdit, setFeedbackEdit] = useState({
+        item: {},
+        edit: false
+    })
 
-    //filter by id and remove from arr using filter
+    //delete feedback filter by id and remove from arr using filter
     const deleteFeedback = (id) => {
     if (window.confirm('are you sure you want to delete')) {
         setFeedback(feedback.filter((item) => item.id !== id))
      }
     }
+
+    //addfeedback
     const addFeedback = (newFeedback) => {
         newFeedback.id = uuidv4()
         //adding to our state of objects; should be added to our ui
         setFeedback([newFeedback, ...feedback])
     }
 
+    //update feedback
+    const editFeedback = (item) => {
+        setFeedbackEdit({
+            item,
+            edt: true
+        })
+    }
+
     return <FeedbackContext.Provider
         value={{
           feedback,
           deleteFeedback,
-          addFeedback
+          addFeedback,
+          editFeedback
         }}>
         { children }
         </FeedbackContext.Provider>
