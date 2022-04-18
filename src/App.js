@@ -37,10 +37,10 @@ function App() {
                     <Route exact path='/'element={
                         <>
                         <FeedbackForm handleAdd={addfeedback}/>
-                        <FeedbackStats feedback={feedback} />
+                        <FeedbackStats />
                         {/* passing the data as feedback to the list */}
                         <FeedbackList 
-                        feedback={feedback}
+                        
                         handleDelete={deleteFeedback}/>
                         </>
                     }
