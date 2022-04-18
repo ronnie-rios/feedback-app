@@ -9,7 +9,6 @@ import AboutLink from './components/AboutLink';
 import { FeedbackProvider } from './context/FeedBackContext';
 
 function App() {
-    
  
     return (
        <FeedbackProvider>
