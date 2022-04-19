@@ -52,10 +52,23 @@ export const FeedbackProvider = ({ children }) => {
     }
 
     //updates the item and spreads it on the arr of feedback
-    const updateFeedback = (id, updItem) => {
-        setFeedback(feedback.map((item) => item.id === id ? 
-        {...item, ...updItem} : item
-        ))
+    const updateFeedback = async (id, updItem) => {
+        const response = await fetch(`/feedback/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updItem),
+        })
+    
+        const data = await response.json()
+    
+        setFeedback(feedback.map((item) => (item.id === id ? data : item)))
+    
+        setFeedbackEdit({
+          item: {},
+          edit: false,
+        })
     }
 
     //set item to be updated 
