@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
 
 const FeedbackContext = createContext();
 
@@ -20,7 +19,7 @@ export const FeedbackProvider = ({ children }) => {
 
     //fetching feedback from db.json
     const fetchFeedback = async () => {
-        const response = await fetch("http://localhost:4000/feedback?_sort=id&_order=desc")
+        const response = await fetch("/feedback?_sort=id&_order=desc")
 
         const data = await response.json();
         setFeedback(data)
@@ -35,10 +34,17 @@ export const FeedbackProvider = ({ children }) => {
     }
 
     //addfeedback
-    const addFeedback = (newFeedback) => {
-        newFeedback.id = uuidv4()
-        //adding to our state of objects; should be added to our ui
-        setFeedback([newFeedback, ...feedback])
+    const addFeedback = async (newFeedback) => {
+        const response = await fetch('/feedback', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newFeedback),
+        })
+    const data = await response.json()
+    //adding to our state of objects; should be added to our ui
+    setFeedback([data, ...feedback])
     }
 
     //updates the item and spreads it on the arr of feedback
