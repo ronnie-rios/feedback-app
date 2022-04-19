@@ -27,8 +27,12 @@ export const FeedbackProvider = ({ children }) => {
 
     }
     //delete feedback filter by id and remove from arr using filter
-    const deleteFeedback = (id) => {
+    const deleteFeedback = async (id) => {
     if (window.confirm('are you sure you want to delete')) {
+        await fetch(`/feedback/${id}`, {
+            method: 'DELETE'
+        })
+        
         setFeedback(feedback.filter((item) => item.id !== id))
      }
     }

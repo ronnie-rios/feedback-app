@@ -11,11 +11,6 @@
       "text": "This is feedback item 2 from the db.json"
     },
     {
-      "id": 3,
-      "rating": 8,
-      "text": "This is feedback item 3 from the db.json"
-    },
-    {
       "text": "testing post",
       "rating": 5,
       "id": 4
