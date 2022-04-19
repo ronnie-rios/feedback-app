@@ -1,21 +1,21 @@
 import React from 'react';
 import { useContext } from 'react';
 import FeedBackitem from './FeedbackItem';
-// import PropTypes from 'prop-types';
+import Spinner from './shared/Spinner';
 import { motion, AnimatePresence } from 'framer-motion';
 import FeedbackContext from '../context/FeedBackContext';
 
 function FeedbackList() {
    //extracting from feedback context
-   const {feedback} = useContext(FeedbackContext);
+   const { feedback, isLoading } = useContext(FeedbackContext);
 
-    //if no feedback display this p tag
-    if (!feedback || feedback.length === 0) {
+    //if not loading and if no feedback display this p tag
+    if (!isLoading && (!feedback || feedback.length === 0)) {
         return <p>no feedback yet</p>
     }
 
-    return (
-    <div className='feedback-list'>
+    return isLoading ? ( <Spinner /> ) : (
+        <div className='feedback-list'>
         <AnimatePresence>
         {/*mapping through feedback destructured property, set item as own component
         and setting the key to the feedback.item.id and item to feedback.item*/}
@@ -33,7 +33,7 @@ function FeedbackList() {
         ))}
         </AnimatePresence>
     </div>
-  )
+    )
 }
 
 // FeedbackList.propTypes = {
